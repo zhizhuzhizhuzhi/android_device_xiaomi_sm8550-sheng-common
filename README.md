@@ -1,20 +1,9 @@
-# Common device configuration for Xiaomi 8550 family
+# Xiaomi SM8550 Sheng common configuration
 
-## Currently supported devices:
+Sheng-specific SM8550 configuration for AOSPA Calcite. Inherits the separate
+`sm8550-platform-common` tree and uses `vendor/xiaomi/sm8550-sheng-common`.
+Use the pinned manifest and Sheng device README for extraction and builds.
 
-- Xiaomi 13 (fuxi)
-- Xiaomi 13 Pro (nuwa)
-- Xiaomi 13 Ultra (ishtar)
-- POCO F6 Pro / Redmi K70 (vermeer)
-
-## Currently supported SoCs
-
-- SM8550 (kalama)
-
-## Copyright
-
-```
-Copyright (C) 2024 Paranoid Android
-
-SPDX-License-Identifier: Apache-2.0
-```
+The `qspm-v2/provenance.json` records the pinned upstream QSPM input repository.
+Those proprietary binaries are extracted separately and are not relicensed
+under this repository's Apache-2.0 configuration license.

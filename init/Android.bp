@@ -31,12 +31,6 @@ prebuilt_etc {
     vendor: true,
 }
 
-prebuilt_etc {
-    name: "init.mi_udfps.rc",
-    src: "init.mi_udfps.rc",
-    sub_dir: "init/hw",
-    vendor: true,
-}
 
 prebuilt_etc {
     name: "ueventd.xiaomi.rc",
@@ -46,7 +40,7 @@ prebuilt_etc {
 }
 
 cc_library_static {
-    name: "libinit_xiaomi_sm8550",
+    name: "libinit_xiaomi_sheng",
     srcs: ["init_xiaomi8550.cpp"],
     recovery_available: true,
     whole_static_libs: ["libbase"],
@@ -55,3 +49,4 @@ cc_library_static {
         "system/core/init"
     ]
 }
+

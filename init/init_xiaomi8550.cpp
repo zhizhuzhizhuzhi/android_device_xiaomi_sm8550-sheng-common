@@ -11,6 +11,7 @@
 
 #include <cstdlib>
 #include <string.h>
+#include <unistd.h>
 
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
@@ -54,49 +55,12 @@ void set_ro_build_prop(const string &prop, const string &value) {
 }
 
 void vendor_load_properties() {
-    // Detect variant and override properties
-    string region = GetProperty("ro.boot.hwc", "");
-    string sku = GetProperty("ro.boot.hardware.sku", "");
-
-    // Override device specific props
-    set_build_prop("ro.build.product", sku);
-    set_ro_build_prop("device", sku);
-
-    if (sku == "fuxi") { // Xiaomi 13
-        if (region == "CN") { // China
-            set_ro_build_prop("model", "2211133C");
-            set_ro_build_prop("name", "fuxi");
-        } else {              // Global
-            set_ro_build_prop("model", "2211133G");
-            set_ro_build_prop("name", "fuxi_global");
-        }
-    } else if (sku == "nuwa") { // Xiaomi 13 Pro
-        if (region == "CN") { // China
-            set_ro_build_prop("model", "2210132C");
-            set_ro_build_prop("name", "nuwa");
-        } else {              // Global
-            set_ro_build_prop("model", "2210132G");
-            set_ro_build_prop("name", "nuwa_global");
-        }
-    } else if (sku == "ishtar") { // Xiaomi 13 Ultra
-        if (region == "CN") { // China
-            set_ro_build_prop("model", "2304FPN6DC");
-            set_ro_build_prop("name", "ishtar");
-        } else {              // Global
-            set_ro_build_prop("model", "2304FPN6DG");
-            set_ro_build_prop("name", "ishtar_global");
-        }
-    } else if (sku == "vermeer") { // POCO F6 Pro / Redmi K70
-        if (region == "CN") { // China - Redmi K70
-            set_ro_build_prop("model", "23113RKC6C");
-            set_ro_build_prop("name", "vermeer");
-            set_ro_build_prop("brand", "Redmi");
-        } else {              // Global - POCO F6 Pro
-            set_ro_build_prop("model", "23113RKC6G");
-            set_ro_build_prop("name", "vermeer_global");
-        }
-    }
-
-    // Override hardware revision
-    set_build_prop("ro.boot.hardware.revision", sku);
+    // This library is built only for Sheng. Never adopt an arbitrary boot SKU.
+    const string region = GetProperty("ro.boot.hwc", "");
+    const bool china = region == "CN";
+    set_build_prop("ro.build.product", "sheng");
+    set_ro_build_prop("device", "sheng");
+    set_ro_build_prop("model", china ? "24018RPACC" : "24018RPACG");
+    set_ro_build_prop("name", china ? "sheng" : "sheng_global");
+    set_build_prop("ro.product.mod_device", china ? "sheng" : "sheng_global");
 }

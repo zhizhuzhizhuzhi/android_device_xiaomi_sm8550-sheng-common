@@ -1,0 +1,6 @@
+# Generated / extracted inputs retain their original licenses.
+/qspm-v2/vendor.qti.snapdragonServices-V2-ndk.so
+/qspm-v2/vendor.qti.qesdsys-V4-ndk.so
+/qspm-v2/snapdragon_services
+__pycache__/
+*.pyc

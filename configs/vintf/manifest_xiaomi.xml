@@ -1,35 +1,66 @@
-<!--
-     Copyright (C) 2023 Paranoid Android
-     SPDX-License-Identifier: Apache-2.0
--->
-<manifest version="1.0" type="device">
+<manifest version="5.0" type="device" target-level="7">
+    
+    
     <hal format="hidl">
-        <name>vendor.qti.sla.service</name>
+        <name>android.hardware.tetheroffload.config</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>ISlaService</name>
+            <name>IOffloadConfig</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::ISlaService/default</fqname>
+        <fqname>@1.0::IOffloadConfig/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.rongcard.hardware.eid</name>
+        <name>android.hardware.tetheroffload.control</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
-            <name>IEidDevice</name>
+            <name>IOffloadControl</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IEidDevice/default</fqname>
+        <fqname>@1.1::IOffloadControl/default</fqname>
+    </hal>
+    
+    <hal format="hidl">
+        <name>vendor.qti.hardware.data.connection</name>
+        <transport>hwbinder</transport>
+        <version>1.1</version>
+        <interface>
+            <name>IDataConnection</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+        <fqname>@1.1::IDataConnection/slot1</fqname>
+        <fqname>@1.1::IDataConnection/slot2</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.xiaomi.hardware.bgservice</name>
+        <name>vendor.qti.hardware.data.iwlan</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
-            <name>IBGService</name>
-            <instance>default</instance>
+            <name>IIWlan</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
         </interface>
+        <fqname>@1.1::IIWlan/slot1</fqname>
+        <fqname>@1.1::IIWlan/slot2</fqname>
+    </hal>
+    
+    
+    
+    
+    
+    <!-- Required by Sheng's stock primary audio HAL (stock manifest_non_qmaa.xml). -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.pal</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IPAL/default</fqname>
+    </hal>
+    <!-- Stock libagm initializes and exports this service for its mixer clients. -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.AGMIPC</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IAGM/default</fqname>
     </hal>
 </manifest>

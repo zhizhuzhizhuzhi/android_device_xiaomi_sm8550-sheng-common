@@ -4,3 +4,6 @@ type vendor_fingerprint_data_file_fpdump, data_file_type, file_type;
 
 # Wifi
 type vendor_mac_vendor_data_file, data_file_type, file_type, mlstrustedobject;
+
+# Factory Wi-Fi address input on persist; readers do not need to modify it.
+type vendor_sheng_wifi_factory_file, file_type;

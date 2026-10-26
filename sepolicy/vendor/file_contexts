@@ -26,3 +26,13 @@
 # Wifi
 /data/vendor/mac_addr(/.*)? u:object_r:vendor_mac_vendor_data_file:s0
 /vendor/bin/nv_mac u:object_r:vendor_wcnss_service_exec:s0
+# SNPE's CPU-side FastRPC stub is loaded by the stock system camera process.
+/vendor/lib64/libSnpeHtpV73Stub\.so                u:object_r:vendor_public_lib_file:s0
+
+# Normal UFS LUN BSG interfaces used by qseecomd. LUN4/RPMB retain their
+# existing dedicated Qualcomm labels; raw block-device permissions are unchanged.
+/dev/0:0:0:[0-35] u:object_r:vendor_bsg_device:s0
+
+# Read-only factory Wi-Fi MAC input, distinct from generated /data/vendor/mac_addr.
+/mnt/vendor/persist/kiwi_v2 u:object_r:vendor_sheng_wifi_factory_file:s0
+/mnt/vendor/persist/kiwi_v2/wlan_mac\.bin u:object_r:vendor_sheng_wifi_factory_file:s0
